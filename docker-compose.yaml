@@ -1,0 +1,73 @@
+services:
+
+  mongo:
+    image: mongo:8.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/mongo-data:/data/db
+      - ./mongo/configdb:/data/configdb
+      - ./mongo/mongodb-dataset:/mongodb-dataset
+      - ./mongo/mongorestore.sh:/docker-entrypoint-initdb.d/mongorestore.sh
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - webnet
+  
+  postgres:
+    container_name: postgres
+    image: postgres:17.3
+    environment:
+      POSTGRES_DB: energy
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres/postgresql-data:/var/lib/postgresql/data
+      - ./files/energy.sql:/docker-entrypoint-initdb.d/energy.sql
+      - ./files:/files
+    networks:
+      - webnet
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: postgres
+      PGADMIN_LISTEN_PORT: 5050
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - ./files:/files
+      - ./pgadmin/servers.json:/pgadmin4/servers.json
+      - ./pgadmin/pgadmin:/var/lib/pgadmin
+    ports:
+      - 5050:5050
+    networks:
+      - webnet
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    user: '0'
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      # - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-worldmap-panel,grafana-piechart-panel
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SECURITY_ANGULAR_SUPPORT_ENABLED=True
+      - GF_FEATURE_TOGGLES_ANGULARDEPRECATIONUI=False
+    ports:
+      - '8085:3000'
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
