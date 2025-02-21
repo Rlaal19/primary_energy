@@ -32,6 +32,8 @@ Now that the project is downloaded, you can work with the resources and configur
 ### Explanation:
 Docker Compose is used to define and run multi-container Docker applications. In this step, you're using Docker to start containers that will run PostgreSQL, MongoDB, and other services for your energy data analysis.
 
+![Containers](docs/docker-compose.png "Container")
+
 ```sh
 primary_energy $ docker compose up
 ```
@@ -54,6 +56,8 @@ PgAdmin is a graphical user interface (GUI) for managing PostgreSQL databases. Y
   - **Password:** `postgres`
   - **Database:** `energy`
 
+![PgAdmin](docs/pgadmin.png "PgAdmin")
+
 ### What you’ll do in PgAdmin:
 - Once logged in, you can navigate to the `energy` database.
 - You can view tables, run SQL queries, and manage the PostgreSQL database directly from PgAdmin.
@@ -70,6 +74,8 @@ MongoDB Compass is a GUI tool that helps you interact with MongoDB databases. It
   - **Username:** `root`
   - **Password:** `example`
 
+![Compass](docs/mongodbcompass.png "Compass")
+
 ### What you’ll do in MongoDB Compass:
 - After connecting, you can view the collections and documents stored in MongoDB.
 - You can query and explore the data, making it easier to work with MongoDB and ensure that the energy data is stored correctly.
@@ -85,6 +91,8 @@ Grafana is a popular open-source platform for visualizing time-series data. In t
 - **Login Credentials:**
   - **Username:** `admin`
   - **Password:** `admin`
+
+![Grafana](docs/grafana.png "Grafana")
 
 ### What you’ll do in Grafana:
 - Once logged in, you can start creating dashboards by adding data sources (PostgreSQL or MongoDB).
