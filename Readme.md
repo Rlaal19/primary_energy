@@ -4,7 +4,7 @@ A publication of recent and historical U.S. energy statistics. This publication 
 https://www.eia.gov/totalenergy/data/monthly/
 
 
-## ENERGY ANAlYSIS BY DATABASE
+## ENERGY ANALYSIS BY DATABASE
 
 ![The Energy Architecture](docs/primary_energy.drawio.png "The Energy Architecture")
 
