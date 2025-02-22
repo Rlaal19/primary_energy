@@ -68,6 +68,7 @@
               "mode": "off"
             }
           },
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -81,7 +82,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "QBtu"
         },
         "overrides": []
       },
@@ -94,7 +96,10 @@
       "id": 7,
       "options": {
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "sum",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true,
@@ -221,7 +226,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "QBtu"
         },
         "overrides": []
       },
@@ -234,7 +240,10 @@
       "id": 3,
       "options": {
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "sum",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true,
@@ -361,7 +370,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "QBtu"
         },
         "overrides": []
       },
@@ -374,7 +384,10 @@
       "id": 8,
       "options": {
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "sum",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true,
@@ -488,6 +501,7 @@
               "mode": "off"
             }
           },
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -501,7 +515,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "QBtu"
         },
         "overrides": []
       },
@@ -514,7 +529,10 @@
       "id": 5,
       "options": {
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "sum",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -595,6 +613,6 @@
   "timezone": "browser",
   "title": "Energy Overview",
   "uid": "eedn33so0vcaob",
-  "version": 3,
+  "version": 6,
   "weekStart": ""
 }
