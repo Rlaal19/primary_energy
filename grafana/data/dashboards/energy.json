@@ -487,7 +487,7 @@
               "fill": "solid"
             },
             "lineWidth": 1,
-            "pointSize": 2,
+            "pointSize": 7,
             "scaleDistribution": {
               "type": "linear"
             },
@@ -613,6 +613,6 @@
   "timezone": "browser",
   "title": "Energy Overview",
   "uid": "eedn33so0vcaob",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }
