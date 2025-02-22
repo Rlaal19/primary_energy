@@ -45,4 +45,4 @@ mongo-data
 postgresql-data
 data_temp
 pgadmin/pgadmin/sessions
-!grafana/data/grafana.db
+grafana/data/plugins
