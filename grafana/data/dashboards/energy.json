@@ -122,7 +122,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT ts as \"time\",\ndescription,\nvalue as \"QBtu\"\nFROM primary_energy_consumption\nWHERE description IN ('Total Primary Energy Consumption', 'Total Fossil Fuels Consumption', 'Total Renewable Energy Consumption')\n\nUNION\n\nSELECT ts as \"time\",\ndescription,\nvalue as \"QBtu\"\nFROM primary_energy_production\nWHERE description IN ('Total Primary Energy Production', 'Total Fossil Fuels Production', 'Total Renewable Energy Production')\n\nORDER BY \"time\"",
+          "rawSql": "(SELECT ts as \"time\",\ndescription,\nvalue as \"QBtu\"\nFROM primary_energy_consumption\nWHERE description IN ('Total Primary Energy Consumption', 'Total Fossil Fuels Consumption', 'Total Renewable Energy Consumption')\nAND ts BETWEEN $__timeFrom()  AND $__timeTo() \n)\n\nUNION\n\n(SELECT ts as \"time\",\ndescription,\nvalue as \"QBtu\"\nFROM primary_energy_production\nWHERE description IN ('Total Primary Energy Production', 'Total Fossil Fuels Production', 'Total Renewable Energy Production')\nAND ts BETWEEN $__timeFrom()  AND $__timeTo() \n)\n\n\nORDER BY \"time\"",
           "refId": "A",
           "sql": {
             "columns": [
@@ -266,7 +266,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT ts as \"time\",\ndescription,\nvalue as \"QBtu\"\nFROM primary_energy_production\nWHERE description NOT IN ('Total Primary Energy Production', 'Total Fossil Fuels Production', 'Total Renewable Energy Production')\nORDER BY \"time\"",
+          "rawSql": "SELECT ts as \"time\",\ndescription,\nvalue as \"QBtu\"\nFROM primary_energy_production\nWHERE description NOT IN ('Total Primary Energy Production', 'Total Fossil Fuels Production', 'Total Renewable Energy Production')\nAND ts BETWEEN $__timeFrom()  AND $__timeTo() \nORDER BY \"time\"",
           "refId": "A",
           "sql": {
             "columns": [
@@ -410,7 +410,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT ts as \"time\",\ndescription,\nvalue as \"QBtu\"\nFROM primary_energy_consumption\nWHERE description NOT IN ('Total Primary Energy Consumption','Total Fossil Fuels Consumption', 'Total Renewable Energy Consumption')\nORDER BY \"time\"",
+          "rawSql": "SELECT ts as \"time\",\ndescription,\nvalue as \"QBtu\"\nFROM primary_energy_consumption\nWHERE description NOT IN ('Total Primary Energy Consumption','Total Fossil Fuels Consumption', 'Total Renewable Energy Consumption')\nAND ts BETWEEN $__timeFrom()  AND $__timeTo() \nORDER BY \"time\"",
           "refId": "A",
           "sql": {
             "columns": [
@@ -553,7 +553,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT ts as \"time\",\ndescription, \nvalue AS \"QBtu\"\nFROM primary_energy_consumption\nWHERE description='Coal Consumption'\n\nUNION\n\nSELECT ts as \"time\",\ndescription, \nvalue AS \"QBtu\"\nFROM primary_energy_production\nWHERE description='Coal Production'\n\nORDER BY \"time\"",
+          "rawSql": "SELECT ts as \"time\",\ndescription, \nvalue AS \"QBtu\"\nFROM primary_energy_consumption\nWHERE description='Coal Consumption' AND ts BETWEEN $__timeFrom()  AND $__timeTo() \nUNION\n\nSELECT ts as \"time\",\ndescription, \nvalue AS \"QBtu\"\nFROM primary_energy_production\nWHERE description='Coal Production' AND ts BETWEEN $__timeFrom()  AND $__timeTo() \n\nORDER BY \"time\"",
           "refId": "A",
           "sql": {
             "columns": [
@@ -613,6 +613,6 @@
   "timezone": "browser",
   "title": "Energy Overview",
   "uid": "eedn33so0vcaob",
-  "version": 6,
+  "version": 7,
   "weekStart": ""
 }
