@@ -214,6 +214,8 @@
             }
           },
           "mappings": [],
+          "max": 5,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -358,6 +360,8 @@
             }
           },
           "mappings": [],
+          "max": 5,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -521,7 +525,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 22,
         "w": 24,
         "x": 0,
         "y": 30
@@ -553,7 +557,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT ts as \"time\",\ndescription, \nvalue AS \"QBtu\"\nFROM primary_energy_consumption\nWHERE description='Coal Consumption' AND ts BETWEEN $__timeFrom()  AND $__timeTo() \nUNION\n\nSELECT ts as \"time\",\ndescription, \nvalue AS \"QBtu\"\nFROM primary_energy_production\nWHERE description='Coal Production' AND ts BETWEEN $__timeFrom()  AND $__timeTo() \n\nORDER BY \"time\"",
+          "rawSql": "SELECT ts as \"time\",\ndescription, \nvalue AS \"QBtu\"\nFROM primary_energy_consumption\nWHERE description NOT IN ('Total Fossil Fuels Consumption', 'Total Renewable Energy Consumption', 'Total Primary Energy Consumption') AND ts BETWEEN $__timeFrom()  AND $__timeTo() \nUNION\n\nSELECT ts as \"time\",\ndescription, \nvalue AS \"QBtu\"\nFROM primary_energy_production\nWHERE description NOT IN ('Total Fossil Fuels Production', 'Total Renewable Energy Production', 'Total Primary Energy Production') AND ts BETWEEN $__timeFrom()  AND $__timeTo() \n\nORDER BY \"time\"",
           "refId": "A",
           "sql": {
             "columns": [
@@ -613,6 +617,6 @@
   "timezone": "browser",
   "title": "Energy Overview",
   "uid": "eedn33so0vcaob",
-  "version": 8,
+  "version": 11,
   "weekStart": ""
 }
